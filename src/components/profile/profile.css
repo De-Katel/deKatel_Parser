@@ -1,0 +1,55 @@
+.profileWrap {
+    display: flex;
+    padding-top: 44px;
+    padding-left: 32px;
+    margin-bottom: 40px;
+}
+
+.profileInfo {
+    margin-right: 25px;
+    color: #145374;
+    width: 700px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 40px;
+    box-sizing: border-box;
+    height: auto;
+}
+
+.infoTable {
+    display: flex;
+}
+
+.infoTable>ul {
+    padding: 0;
+    margin: 0;
+    margin-right: 40px;
+    margin-top: 15px;
+    list-style: none;
+
+}
+
+.company_profile {
+
+    font-size: 18px;
+}
+
+.description_profile {
+    
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.address_profile {
+    
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.list_value{
+    font-weight: 200;
+}.profile_counters{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

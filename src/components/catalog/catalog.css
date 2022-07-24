@@ -1,0 +1,20 @@
+.catalog {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 30px 30px 30px;
+    background-color: rgb(246, 249, 251);
+}
+
+.catalogItem {
+    cursor: pointer;
+    padding: 5px;
+    color: rgb(19, 80, 161)
+}
+
+.catalogHeader {
+    font-size: 32px;
+    padding: 30px 0 0 30px;
+    background-color: rgb(246, 249, 251);
+    color: black;
+    margin: 0;
+}

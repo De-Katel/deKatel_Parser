@@ -1,0 +1,73 @@
+.resultHeader {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    height: 54px;
+    background: #F9F9FA;
+    width: 95%;
+    align-items: center;
+    color: #76767A;
+}
+
+.result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.liWrap {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    height: 54px;
+}
+
+ .companyName {
+    display: flex;
+    align-items: center;
+    width: 25%;
+}
+
+.linkToCard{
+    width: 25%;
+    display: flex;
+    align-items: center;
+}
+
+.companyDescription {
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.companyAddress {
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+
+.companyPhone {
+    display: flex;
+    align-items: center;
+    width: 10%;
+}
+
+.headerItem {
+    justify-content: center;
+}
+
+li:hover {
+    background: rgba(209, 240, 252, 0.3);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    width: 95%;
+}
+
+.searchByList{
+    display: flex;
+    justify-content: end;
+    padding: 34px;
+}

@@ -1,0 +1,82 @@
+.registration {
+   display: flex;
+   justify-content: center;
+}
+
+form{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+Link {
+   text-decoration: none;
+}
+
+.container {
+   position: absolute;
+   background-color: #ffffff;
+   top: 20%;
+   margin: auto;   
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   border-radius: 10px;
+   box-shadow: 0 0 10px 5px rgb(71, 71, 71);
+   width: 350px;
+   z-index: 100;
+   padding: 5px 0 20px 0;
+
+}
+
+.cross {
+   display: flex;
+   height: 32px;
+   font-size: 30px;
+   width: 340px;
+   justify-content: end;
+}
+
+.button {
+   margin-top: 20px;
+   cursor: pointer;
+   width: 152px;
+   height: 35px;
+   background: #145374;
+   border: 2px solid #145374;
+   border-radius: 10px;
+   font-size: 14px;
+   color: #ffffff;
+}
+
+.button:hover {
+   background: #00334E;
+}
+
+.validPrompt{
+   padding: 5px;
+   box-shadow: 0 0 5px 1px rgb(198, 210, 217);
+   margin-top: 20px;
+   border-radius: 5px;
+   z-index: 1500;
+   background-color: #ffffff;
+   font-size: 12px;
+
+}
+
+.validPromptHeader{
+   color: black;
+   font-size: 14px;
+   padding-bottom: 5px;
+   margin: 0;
+}
+
+.validPrompt::after {
+    content: '';
+    position: absolute;
+    left: -14px;
+    bottom: 40px;
+    border: 8px solid transparent;
+    border-right: 8px solid white;
+
+}

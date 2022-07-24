@@ -1,0 +1,34 @@
+.counterWrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 25px 10px 25px 10px;
+    background-color: white;
+    box-shadow: 0px 0px 4px rgba(227, 235, 252, 0.5);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.imgWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(238, 111, 87, 0.3);
+    opacity: 0.5;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+.description {
+    color: #76767A;
+    margin: 0;
+    font-size: 14px;
+}
+
+.counter {
+    font-size: 20px;
+    margin-left: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+}

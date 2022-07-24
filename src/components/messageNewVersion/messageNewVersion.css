@@ -1,0 +1,9 @@
+ .emptyMessage{
+font-size: 2em;
+    text-align: center;
+    padding:40px 30px 30px 30px;
+ }
+
+ .messageNewVersionWrap{
+    text-align: center;
+ }

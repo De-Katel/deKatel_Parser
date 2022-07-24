@@ -1,0 +1,61 @@
+.navWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+.navPanel {
+    display: flex;
+    justify-content: center;
+    width: 324px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.navPanel>ul {
+    width: 276px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.navPanel>ul>li {
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 14px 10px;
+}
+
+.navPanel>ul>li:hover {
+    cursor: pointer;
+    background-color: rgba(190, 236, 254, 0.3);
+}
+
+.active{
+    background-color: rgba(132, 198, 224, 0.3);
+}
+
+.logo {
+    margin: auto;
+    margin-top: 70px;
+    border: 1px solid #12126c;
+    background-color: #FAFCFF;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+
+.firmInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 276px;
+    border-top: 1px solid #E5E5EB;
+}
