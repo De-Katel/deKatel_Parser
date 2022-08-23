@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { OverlayTrigger, Popover } from 'react-bootstrap';
 
-import { fetchError, gotAnError } from '../../storage/actions/datasActions';
+import { fetchError} from '../../storage/actions/datasActions';
 import { fetchAuthUserSuccess } from '../../storage/actions/usersActions';
 
 import Input from '../input/Input';
@@ -40,37 +40,6 @@ const Registration = () => {
          </Popover.Body>
       </Popover>
    )
-   const handleSubmit = async (password, username) => {
-
-      const options = {
-         method: 'POST',
-         body: JSON.stringify({
-            "password": `${password}`,
-            "username": `${username}`,
-         }),
-         headers: { "content-type": "application/json" }
-      }
-
-      await fetch('https://msh777.herokuapp.com/auth/token/login/', options)
-         .then((res) => {
-            if (res.ok) {
-               return res.json()
-            } else { return Promise.reject(res) }
-         })
-         .then(data => {
-            dispatch(fetchAuthUserSuccess(data.auth_token));
-            navigate('/profile');
-         })
-         .catch((res) => {
-            if ('status' in res) {
-               dispatch(gotAnError(['Неверное имя пользователя или пароль!', 'Повторите попытку авторизации.']))
-               dispatch(fetchError());
-            } else {
-               dispatch(gotAnError(['Ошибка запроса. Проверьте соединение с интернетом и повторите попытку.']))
-               dispatch(fetchError());
-            }
-         })
-   }
 
    const getMessageArr = (obj) => {
       let arr = []
@@ -86,29 +55,30 @@ const Registration = () => {
       const options = {
          method: 'POST',
          body: JSON.stringify({
-            "email": `${values.email}`,
-            "username": `${values.username}`,
-            "password": `${values.password}`,
+            user: {
+               "email": `${values.email}`,
+               "username": `${values.username}`,
+               "password": `${values.password}`
+            }
          }),
          headers: { "Content-type": "application/json" }
       }
-
       //Запрос для создания новой учетной записи:
-      fetch('https://msh777.herokuapp.com/api/v1/auth/users/', options)
-         .then((response) => {
-            if (response.ok) {
-               handleSubmit(values.password, values.username, null)
-
-            } else {
+      fetch('https://msh777.herokuapp.com/api/v2/users/', options)
+         .then((res) => {
+            return res.json()
+         })
+         .then(data => {
+            if ('errors' in data) {
                dispatch(fetchError());
-               return response.json()
+               setErrorList(getMessageArr(data.errors))
+            } else {
+               dispatch(fetchAuthUserSuccess(data.user));
+               navigate('/profile');
             }
          })
-         .then((res) => {
-            setErrorList(getMessageArr(res))
-         })
          .catch(() => {
-            setErrorList(['Ошибка запроса. Проверьте соединение с интернетом и повторите попытку.'])
+            setErrorList(['Ошибка запроса. Проверьте соединение с интернетом и повторите попытку.']);
             dispatch(fetchError());
          })
 

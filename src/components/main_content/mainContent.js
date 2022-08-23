@@ -1,6 +1,8 @@
 import { React, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Routes, Route, useNavigate, useLocation  } from 'react-router-dom';
+
+import Analytics from "../analytics/analytics";
 import SearchPanel from '../search_panel/searchPanel';
 import ShowCounter from "../show_counter/showCounter";
 import Profile from "../profile/profile";
@@ -10,6 +12,7 @@ import ResultSearch from "../result_search/resultSearch";
 import MessageNewVersion from "../messageNewVersion/messageNewVersion";
 import Favorites from "../favorites/favorites";
 import Catalog from "../catalog/catalog";
+
 import './mainContent.css'
 
 import icon from './images/icon.svg'
@@ -96,7 +99,7 @@ const MainContent = () => {
                 <Route path='/' element={null} />
                 <Route path='/profile' element={<Profile card={userCard} />} />
                 <Route path='/company' element={<ResultSearch />} />
-                <Route path='/analytics' element={<MessageNewVersion />} />
+                <Route path='/analytics' element={<Analytics />} />
                 <Route path='/add_company' element={<MessageNewVersion />} />
                 <Route path='/add_data' element={<MessageNewVersion />} />
                 <Route path='/company/:cardId' element={<Profile />} />

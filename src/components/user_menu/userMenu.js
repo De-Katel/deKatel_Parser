@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { OverlayTrigger, Popover } from 'react-bootstrap';
 import { logout } from '../../storage/actions/usersActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './userMenu.css';
 import avatar from './image/avatar.svg'
 import rowDown from './image/row_down.svg'
@@ -12,6 +12,8 @@ const UserMenu = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const userName = useSelector(state => state.users.user.userName);
 
   const [showProfile, setShowProfile] = useState(false);
 
@@ -41,12 +43,12 @@ const UserMenu = () => {
           </div>
         </Link>
       </Popover.Body>
-      <Popover.Body>
+      {/* <Popover.Body>
         <div
           className='profile-item'
           onClick={handleClick}
         >Войти как компания</div>
-      </Popover.Body>
+      </Popover.Body> */}
       <Popover.Body>
         <div
           className='profile-item'
@@ -69,8 +71,7 @@ const UserMenu = () => {
           <img className='avatar' src={avatar} alt='avatar' />
         </div>
         <div>
-          <p className='name'>Иванов А.М.</p>
-          <p className='position'>менеджер</p>
+          <p className='name'>{userName}</p>
         </div>
         <div>
           <img className='row' src={showProfile ? rowUp : rowDown} />

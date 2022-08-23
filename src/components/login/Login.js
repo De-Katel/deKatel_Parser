@@ -25,20 +25,22 @@ const Login = () => {
       const options = {
          method: 'POST',
          body: JSON.stringify({
-            "password": `${password}`,
-            "username": `${username}`,
+            user: {
+               "password": `${password}`,
+               "username": `${username}`,
+            }
          }),
          headers: { "content-type": "application/json" }
       }
 
-      await fetch('https://msh777.herokuapp.com/auth/token/login/', options)
+      await fetch('https://msh777.herokuapp.com/api/v2/users/login/', options)
          .then((res) => {
             if (res.ok) {
                return res.json()
             } else { return Promise.reject(res) }
          })
          .then(data => {
-            dispatch(fetchAuthUserSuccess(data.auth_token));
+            dispatch(fetchAuthUserSuccess(data.user));
             navigate('/profile');
          })
          .catch((res) => {

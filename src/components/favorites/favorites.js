@@ -92,7 +92,7 @@ const Favorites = () => {
                             onClick={removeFavorites}
                             className="button button_reg"
                         >
-                            Убратьиз избранного
+                            Убрать из избранного
                         </button>
                     </div>
                     <div className="result">

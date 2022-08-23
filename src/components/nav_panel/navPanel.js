@@ -10,7 +10,7 @@ const NavPanel = () => {
     const location = useLocation();
 
     const name = useSelector(state => state.users.user.userCard.Company);
-    const searchData = useSelector(state => state.datas.searchData)
+    const searchData = useSelector(state => state.datas.searchData);
 
     const outClick = () => {
         dispatch(logout());
@@ -28,31 +28,45 @@ const NavPanel = () => {
             <nav className="navPanel" >
                 <ul>
                     <li className={`${location.pathname == '/profile' ? 'active' : null}`}>
-                        <Link className='link' to={'/profile'}>Профиль</Link>
+                        <Link className='link' to={'/profile'}>
+                            Профиль
+                        </Link>
                     </li>
                     {searchData.length ?
                         <li className={`${location.pathname == '/company' ? 'active' : null}`}>
-                            <Link className="link" to={'/company'}>Поиск</Link>
+                            <Link className="link" to={'/company'}>
+                                Поиск
+                            </Link>
                         </li>
                         : null}
                     {searchData.length ?
                         <li className={`${location.pathname == '/analytics' ? 'active' : null}`}>
-                            <Link className="link" to={'/analytics'}>Аналитика</Link>
+                            <Link className="link" to={'/analytics'}>
+                                Аналитика
+                            </Link>
                         </li>
                         : null}
                     <li className={`${location.pathname == '/add_company' ? 'active' : null}`}>
-                        <Link className="link" to={'/add_company'}>Добавить компаниию</Link>
+                        <Link className="link" to={'/add_company'}>
+                            Добавить компанию
+                        </Link>
                     </li>
                     <li className={`${location.pathname == '/add_data' ? 'active' : null}`}>
-                        <Link className="link" to={'/add_data'}>Загрузить данные</Link>
+                        <Link className="link" to={'/add_data'}>
+                            Загрузить данные
+                        </Link>
                     </li>
                     <li className={`${location.pathname == '/favorites' ? 'active' : null}`}>
-                        <Link className="link" to={'/favorites'}>Избранное</Link>
+                        <Link className="link" to={'/favorites'}>
+                            Избранное
+                        </Link>
                     </li>
                     <li> </li>
                     <li
                         onClick={outClick}
-                    >Выйти</li>
+                    >
+                        Выйти
+                    </li>
                 </ul>
             </nav>
         </div >

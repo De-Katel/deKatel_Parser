@@ -2,7 +2,8 @@ import { USERS_ACTIONS } from "../actions/usersActions";
 
 const initialState = {
    user: {
-      role: 'Admin',
+      role: '',
+      userName: '',
       userCard: {},
       token: null
    }
@@ -15,8 +16,9 @@ const usersRreducer = (state = initialState, action) => {
          return {
             ...state,
             user: {
-               role: null,
-               userCard: null,
+               role: '',
+               userName: '',
+               userCard: {},
                token: null
             }                            //разлогинился
          }
@@ -26,7 +28,8 @@ const usersRreducer = (state = initialState, action) => {
          return {
             ...state,
             user: {
-               role: 'Admin',
+               role: action.role,
+               userName: action.userName,
                userCard: {
                   Address: "ул. Спасателей, д.3",
                   Catalogs: [],

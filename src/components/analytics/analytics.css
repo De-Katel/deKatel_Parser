@@ -1,0 +1,9 @@
+.analytics{
+   display: flex;
+
+}
+
+.chartWrap{
+    width: 40%;
+    padding: 40px;
+}

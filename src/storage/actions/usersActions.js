@@ -11,9 +11,11 @@ export const logout = () => {
    }
 }
 
-export const fetchAuthUserSuccess = (token) => {
+export const fetchAuthUserSuccess = (user) => {
    return {
       type: USERS_ACTIONS.FETCH_AUTH_USER_SUCCESS,
-      token,
+      role: user.role,
+      userName: user.username,
+      token: user.token
    }
 }

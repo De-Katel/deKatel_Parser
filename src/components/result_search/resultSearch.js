@@ -10,7 +10,6 @@ const ResultSearch = () => {
 
     const [selectedList, setSelectedList] = useState([]);
 
-
     const checkboxCounter = (e) => {
 
         if (e.target.checked) {
