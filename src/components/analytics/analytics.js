@@ -10,9 +10,23 @@ import CategoriesChart from "../charts/chart";
 import { Doughnut } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 
+export const colorArr = [
+  'rgba(20,83,116, 1)',
+  'rgba(20,83,116, 0.9)',
+  'rgba(20,83,116, 0.8)',
+  'rgba(20,83,116, 0.7)',
+  'rgba(20,83,116, 0.6)',
+  'rgba(20,83,116, 0.5)',
+  'rgba(20,83,116, 0.4)',
+  'rgba(20,83,116, 0.3)',
+  'rgba(20,83,116, 0.2)',
+  'rgba(20,83,116, 0.1)'
+]
+
+
 const LocalityChart = () => {
 
-  Chart.defaults.plugins.legend.display = true;
+  // Chart.defaults.plugins.legend.display = true;
 
   const searchData = useSelector(state => state.datas.searchData);
 
@@ -38,19 +52,6 @@ const LocalityChart = () => {
     doughnutLabel.push(key);
     doughnutData.push(result[key])
   }
-
-  const colorArr = [
-    'rgba(0, 0, 255, 0.5)',
-    'rgba(0, 0, 255, 0.55)',
-    'rgba(0, 0, 255, 0.6)',
-    'rgba(0, 0, 255, 0.65)',
-    'rgba(0, 0, 255, 0.7)',
-    'rgba(0, 0, 255, 0.75)',
-    'rgba(0, 0, 255, 0.8)',
-    'rgba(0, 0, 255, 0.85)',
-    'rgba(0, 0, 255, 0.9)',
-    'rgba(0, 0, 255, 1)'
-  ]
 
   const doughnutChartData = {
     labels: doughnutLabel.length > 10 ? doughnutLabel.slice(0, 10) : doughnutLabel,

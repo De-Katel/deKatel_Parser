@@ -5,10 +5,12 @@ import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 
+import { colorArr } from "../analytics/analytics";
+
 const CategoriesChart = () => {
 
-    Chart.defaults.plugins.legend.display = false;
-    Chart.defaults.plugins.legend.position = 'left';
+    // Chart.defaults.plugins.legend.display = false;
+    Chart.defaults.plugins.legend.position = 'right';
 
     const searchData = useSelector(state => state.datas.searchData);
 
@@ -46,7 +48,7 @@ const CategoriesChart = () => {
                 indexAxis: "y",
                 label: 'Компаний в результатах поиска',
                 borderColor: "#3333ff",
-                backgroundColor: "rgba(0, 0, 255, 0.5)",
+                backgroundColor: colorArr,
                 fill: true
             }
         ]
@@ -61,7 +63,8 @@ const CategoriesChart = () => {
                     display: false
                 },
                 legend: {
-                    display: false
+                    display: true,
+                    position: 'top'
                 }
             }}
             data={barChartData}
