@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import 'chart.js/auto';
 
@@ -26,9 +27,13 @@ export const colorArr = [
 
 const LocalityChart = () => {
 
+  const navigate = useNavigate();
   // Chart.defaults.plugins.legend.display = true;
-
   const searchData = useSelector(state => state.datas.searchData);
+
+  useEffect(() => {
+    if (!searchData.length) { navigate('/favorites') }
+  })
 
 
   let result = {};

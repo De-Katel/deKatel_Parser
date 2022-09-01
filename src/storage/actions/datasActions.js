@@ -4,7 +4,8 @@ export const DATA_ACTIONS = {
    FETCH_ERROR: 'DATA_ACTIONS.FETCH_ERROR',
    LOADING_START: 'LOADING_START',
    LOADING_END: 'LOADING_END',
-   GOT_AN_ERROR:'GOT_AN_ERROR'
+   GOT_AN_ERROR: 'GOT_AN_ERROR',
+   NEW_SEARCH_QUERY: 'NEW_SEARCH_QUERY'
 }
 
 export const fetchDatasGetSuccess = (data) => {
@@ -39,9 +40,17 @@ export const loadingStart = () => {
       type: DATA_ACTIONS.LOADING_START,
    }
 }
+
 export const loadingEnd = () => {
    return {
       type: DATA_ACTIONS.LOADING_END,
+   }
+}
+
+export const newSearchQuery = (searchQuery) => {
+   return {
+      type: DATA_ACTIONS.NEW_SEARCH_QUERY,
+      searchQuery
    }
 }
 

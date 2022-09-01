@@ -9,7 +9,8 @@ const NavPanel = () => {
     const dispatch = useDispatch();
     const location = useLocation();
 
-    const name = useSelector(state => state.users.user.userCard.Company);
+    const role = useSelector(state => state.users.user.role);
+    const userName = useSelector(state => state.users.user.userName);
     const searchData = useSelector(state => state.datas.searchData);
 
     const outClick = () => {
@@ -23,15 +24,15 @@ const NavPanel = () => {
                 <div className="logo">
 
                 </div>
-                <h3>{name}</h3>
+                <h3>{userName}</h3>
             </div>
             <nav className="navPanel" >
                 <ul>
-                    <li className={`${location.pathname == '/profile' ? 'active' : null}`}>
+                    {role == 'MA' && <li className={`${location.pathname == '/profile' ? 'active' : null}`}>
                         <Link className='link' to={'/profile'}>
                             Профиль
                         </Link>
-                    </li>
+                    </li>}
                     {searchData.length ?
                         <li className={`${location.pathname == '/company' ? 'active' : null}`}>
                             <Link className="link" to={'/company'}>
@@ -46,16 +47,18 @@ const NavPanel = () => {
                             </Link>
                         </li>
                         : null}
-                    <li className={`${location.pathname == '/add_company' ? 'active' : null}`}>
-                        <Link className="link" to={'/add_company'}>
-                            Добавить компанию
-                        </Link>
-                    </li>
-                    <li className={`${location.pathname == '/add_data' ? 'active' : null}`}>
-                        <Link className="link" to={'/add_data'}>
-                            Загрузить данные
-                        </Link>
-                    </li>
+                    {role == 'MA' && <>
+                        <li className={`${location.pathname == '/add_company' ? 'active' : null}`}>
+                            <Link className="link" to={'/add_company'}>
+                                Добавить компанию
+                            </Link>
+                        </li>
+                        <li className={`${location.pathname == '/add_data' ? 'active' : null}`}>
+                            <Link className="link" to={'/add_data'}>
+                                Загрузить данные
+                            </Link>
+                        </li>
+                    </>}
                     <li className={`${location.pathname == '/favorites' ? 'active' : null}`}>
                         <Link className="link" to={'/favorites'}>
                             Избранное

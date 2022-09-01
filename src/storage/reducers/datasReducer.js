@@ -8,7 +8,8 @@ const initialState = {
    favorites: [],
    isError: false,
    isLoading: false,
-   errorList: []
+   errorList: [],
+   searchQuery: ''
 }
 
 const datasReducer = (state = initialState, action) => {
@@ -43,13 +44,23 @@ const datasReducer = (state = initialState, action) => {
             ...state,
             errorList: action.errorList
          }
+      case DATA_ACTIONS.NEW_SEARCH_QUERY:
+         return {
+            ...state,
+            searchQuery: action.searchQuery
+         }
       default: return state;
    };
 }
 const persistConfig = {
    key: 'root',
    storage: storage,
-   blackList: ['searchData']
+   blackList: ['searchData',
+      'favorites',
+      'isError',
+      'isLoading',
+      'errorList',
+      'searchQuery']
 };
 
 export default persistReducer(persistConfig, datasReducer);

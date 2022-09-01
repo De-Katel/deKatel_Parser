@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { fetchDatasGetSuccess} from '../../storage/actions/datasActions'
+import { fetchDatasGetSuccess, newSearchQuery } from '../../storage/actions/datasActions'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
@@ -36,7 +36,10 @@ const SearchPanel = () => {
                 }
                 throw new Error('not success')
             })
-            .then((data) => dispatch(fetchDatasGetSuccess(data)))
+            .then((data) => {
+                dispatch(newSearchQuery(label))
+                dispatch(fetchDatasGetSuccess(data))
+            })
             .then(() => navigate('/company'))
         setLabel('');
 

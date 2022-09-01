@@ -1,14 +1,28 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+
 import './resultSearch.css'
+
+import { loadingEnd, loadingStart } from '../../storage/actions/datasActions';
+
+import Loader from "../loader/loadet";
 
 const ResultSearch = () => {
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const token = useSelector(state => state.users.user.token);
     const searchData = useSelector(state => state.datas.searchData);
+    const isLoading = useSelector(state => state.datas.isLoading);
+    const searchQuery = useSelector(state => state.datas.searchQuery)
 
     const [selectedList, setSelectedList] = useState([]);
+
+    // useEffect(() => {
+    //     if (!searchData.length) { navigate('/favorites') }
+    // }, [searchData])
 
     const checkboxCounter = (e) => {
 
@@ -22,6 +36,7 @@ const ResultSearch = () => {
     }
 
     const addFavorites = () => {
+        dispatch(loadingStart());
         fetch(`https://msh777.herokuapp.com/api/v1/favourite/`, {
             method: 'POST',
             headers: {
@@ -30,6 +45,7 @@ const ResultSearch = () => {
             },
             body: JSON.stringify({ favourite: selectedList })
         })
+            .then(() => dispatch(loadingEnd()))
     }
 
     const elements = searchData.map((item) => {
@@ -55,7 +71,7 @@ const ResultSearch = () => {
 
     return (
         <>
-            {searchData.length ?
+            {!isLoading ? (searchData.length ?
                 <>
                     <div className='searchByList'>
                         <button className="button button_reg"
@@ -63,6 +79,7 @@ const ResultSearch = () => {
                             добавить в избранное
                         </button>
                     </div>
+                    <p className="countResult">{`По запросу "${searchQuery}" найдено ${searchData.length} компаний`}</p>
                     <div className="result">
                         <div className="resultHeader">
                             <div className="companyName headerItem">КОМПАНИЯ</div>
@@ -75,7 +92,11 @@ const ResultSearch = () => {
                     </div>
                 </>
                 :
-                <div className="emptyMessage">Список поиска компаний пуст</div>}
+                <>
+                    {searchQuery && <p className="countResult">По запросу "{searchQuery}" ничего не найдено</p>}
+                    <div className="emptyMessage">Список поиска компаний пуст</div>
+                </>)
+                : <Loader />}
         </>
     )
 }

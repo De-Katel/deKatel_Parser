@@ -30,7 +30,7 @@ const Favorites = () => {
                     dispatch(fetchFavoritesGetSuccess(data))
                     return data;
                 })
-                .then((data) => dispatch(loadingEnd()))
+                .then(() => dispatch(loadingEnd()))
         },
         [],
     );

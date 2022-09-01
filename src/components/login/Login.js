@@ -15,7 +15,8 @@ const Login = () => {
    const navigate = useNavigate();
 
    const isFormError = useSelector(state => state.datas.isError);
-   const errorList = useSelector((state) => state.datas.errorList)
+   const errorList = useSelector((state) => state.datas.errorList);
+   const role = useSelector(state => state.users.user.role);
 
    const [values, setValues] = useState({ username: '', password: '' });
 
@@ -41,7 +42,7 @@ const Login = () => {
          })
          .then(data => {
             dispatch(fetchAuthUserSuccess(data.user));
-            navigate('/profile');
+            navigate(data.user.role = 'US' ? '/favorites' : '/profile');
          })
          .catch((res) => {
             if ('status' in res) {
