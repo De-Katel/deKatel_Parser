@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { OverlayTrigger, Popover } from 'react-bootstrap';
 
-import { fetchError} from '../../storage/actions/datasActions';
+import { fetchError } from '../../storage/actions/datasActions';
 import { fetchAuthUserSuccess } from '../../storage/actions/usersActions';
 
 import Input from '../input/Input';
@@ -105,7 +105,7 @@ const Registration = () => {
                      value={values.username}
                      placeholder='Иванов Иван Иванович'
                      onChange={username => setValues({ ...values, username })} />
-                  <Input title={'E - mail:'}
+                  <Input title={'E-mail:'}
                      id={'email'}
                      type={'email'}
                      name={'email'}
@@ -134,7 +134,7 @@ const Registration = () => {
                   </OverlayTrigger>
 
                   <button type='submit' className={css.button}>
-                     Подать заявку
+                     Регистрация
                   </button>
 
                </form >

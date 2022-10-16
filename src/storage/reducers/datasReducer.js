@@ -1,8 +1,5 @@
 import { DATA_ACTIONS } from "../actions/datasActions";
 
-import storage from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
-
 const initialState = {
    searchData: [],
    favorites: [],
@@ -52,15 +49,5 @@ const datasReducer = (state = initialState, action) => {
       default: return state;
    };
 }
-const persistConfig = {
-   key: 'root',
-   storage: storage,
-   blackList: ['searchData',
-      'favorites',
-      'isError',
-      'isLoading',
-      'errorList',
-      'searchQuery']
-};
 
-export default persistReducer(persistConfig, datasReducer);
+export default datasReducer;

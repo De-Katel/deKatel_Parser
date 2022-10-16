@@ -1,36 +1,43 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { fetchFavoritesGetSuccess, loadingEnd, loadingStart } from '../../storage/actions/datasActions'
+import { fetchFavoritesGetSuccess, loadingEnd, loadingStart } from '../../storage/actions/datasActions';
 
 import Loader from "../loader/loadet";
 
 const Favorites = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const isLoading = useSelector(state => state.datas.isLoading)
-    const token = useSelector(state => state.users.user.token);
+    const isLoading = useSelector(state => state.datas.isLoading);
+    const token = useSelector(state => state.users.token);
     const favorites = useSelector(state => state.datas.favorites);
 
     const [selectedList, setSelectedList] = useState([]);
 
+    useEffect(() => {
+        if (!token) { navigate('/') }
+    }, [token])
+
     const getFavorite = useCallback(
         () => {
-            dispatch(loadingStart())
-            fetch(`https://msh777.herokuapp.com/api/v1/favourite`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    "Authorization": `Token ${token}`
-                }
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    dispatch(fetchFavoritesGetSuccess(data))
-                    return data;
+            if (token) {
+                dispatch(loadingStart())
+                token && fetch(`https://msh777.herokuapp.com/api/v1/favourite`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "Authorization": `Token ${token}`
+                    }
                 })
-                .then(() => dispatch(loadingEnd()))
+                    .then((res) => res.json())
+                    .then((data) => {
+                        dispatch(fetchFavoritesGetSuccess(data))
+                        return data;
+                    })
+                    .then(() => dispatch(loadingEnd()))
+            }
         },
         [],
     );

@@ -1,9 +1,15 @@
 .analytics{
    display: flex;
+   justify-content: space-between;
 
 }
 
 .chartWrap{
+    padding: 0;
     width: 40%;
-    padding: 40px;
 }
+
+.locality{
+    padding-top: 25px;
+}
+

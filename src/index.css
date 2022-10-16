@@ -1,15 +1,14 @@
 @font-face {
-  src: url('./fonts/FuturaNewDemi-Reg.ttf');
-  font-family:Futura_New ;
+  src: url('./fonts/OpenSans-VariableFont_wdth,wght.ttf');
+  font-family: OpenSans;
 }
 
-
 body {
-  min-width: 1340px;
-  background-color: #FAFCFF;;
+  min-width: 1393px;
+  background-color: #FAFCFF;
   margin: 0;
   padding-bottom: 40px;
-  font-family:Futura_New, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: OpenSans, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,10 +16,11 @@ body {
 }
 
 code {
-  font-family:Futura_New, source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: OpenSans, source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-#root{
+
+#root {
   margin: 0 auto;
   max-width: 1440px;
 }

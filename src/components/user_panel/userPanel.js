@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import UserMenu from "../user_menu/userMenu";
 
 const UserPanel = () => {
-    const token = useSelector(state => state.users.user.token);
+    const token = useSelector(state => state.users.token);
 
     return (
         <div>
@@ -12,7 +12,7 @@ const UserPanel = () => {
                 <>
                     <Link to={'/login'}>
                         <button className='button'>
-                            Вход
+                            Войти
                         </button>
                     </Link>
                     <Link to={'/registration'}>

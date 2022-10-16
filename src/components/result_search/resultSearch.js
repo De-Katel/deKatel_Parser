@@ -13,16 +13,18 @@ const ResultSearch = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const token = useSelector(state => state.users.user.token);
+    const token = useSelector(state => state.users.token);
     const searchData = useSelector(state => state.datas.searchData);
     const isLoading = useSelector(state => state.datas.isLoading);
     const searchQuery = useSelector(state => state.datas.searchQuery)
 
     const [selectedList, setSelectedList] = useState([]);
 
-    // useEffect(() => {
-    //     if (!searchData.length) { navigate('/favorites') }
-    // }, [searchData])
+    const [qwe, setqwe] = useState(1)
+
+    useEffect(() => {
+        if (!searchData.length) { navigate('/favorites') }
+    }, [searchData])
 
     const checkboxCounter = (e) => {
 
@@ -69,6 +71,7 @@ const ResultSearch = () => {
         );
     });
 
+
     return (
         <>
             {!isLoading ? (searchData.length ?
@@ -79,7 +82,14 @@ const ResultSearch = () => {
                             добавить в избранное
                         </button>
                     </div>
-                    <p className="countResult">{`По запросу "${searchQuery}" найдено ${searchData.length} компаний`}</p>
+                    <p className="countResult">{
+                        `По запросу "${searchQuery}" найдено ${searchData.length} 
+                    ${(searchData.length % 10 === 1 && searchData.length !== 11) ?
+                            'компания'
+                            : (searchData.length % 10 === 2 || searchData.length % 10 === 3 || searchData.length % 10 === 4) && searchData.length !== 12 && searchData.length !== 13 && searchData.length !== 14 ?
+                                'компании'
+                                : 'компаний'}`}
+                    </p>
                     <div className="result">
                         <div className="resultHeader">
                             <div className="companyName headerItem">КОМПАНИЯ</div>

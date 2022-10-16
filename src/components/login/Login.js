@@ -16,7 +16,6 @@ const Login = () => {
 
    const isFormError = useSelector(state => state.datas.isError);
    const errorList = useSelector((state) => state.datas.errorList);
-   const role = useSelector(state => state.users.user.role);
 
    const [values, setValues] = useState({ username: '', password: '' });
 
@@ -42,6 +41,7 @@ const Login = () => {
          })
          .then(data => {
             dispatch(fetchAuthUserSuccess(data.user));
+            sessionStorage.setItem('token', JSON.stringify(data.user.token));
             navigate(data.user.role = 'US' ? '/favorites' : '/profile');
          })
          .catch((res) => {
@@ -56,7 +56,6 @@ const Login = () => {
    }
 
    return (
-
       <div className={css.auth}>
          {!isFormError &&
             <form className={css.form} onSubmit={(e) => handleSubmit(values.password, values.username, e)}>

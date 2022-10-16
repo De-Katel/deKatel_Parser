@@ -5,5 +5,5 @@ section{
 .counters{
     display: flex;
     justify-content: space-evenly;
-    padding: 51px 0;
+    padding: 30px 0;
 }

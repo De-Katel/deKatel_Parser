@@ -7,7 +7,7 @@ import './main.css';
 
 const Main = () => {
 
-    const token = useSelector(state => state.users.user.token);
+    const token = useSelector(state => state.users.token);
 
     return (
         <main>

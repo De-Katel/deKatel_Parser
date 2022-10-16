@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { OverlayTrigger, Popover } from 'react-bootstrap';
+import React, { useState, useRef, useEffect } from 'react';
 import { logout } from '../../storage/actions/usersActions';
 import { useDispatch, useSelector } from 'react-redux';
 import './userMenu.css';
@@ -13,57 +12,85 @@ const UserMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const userName = useSelector(state => state.users.user.userName);
+  const popoverRef = useRef(null)
 
-  const [showProfile, setShowProfile] = useState(false);
+  const userName = useSelector(state => state.users.userName);
+  const role = useSelector(state => state.users.role);
+
+  const [showProfile, setShowProfile] = useState(true);
 
   const handleClick = () => setShowProfile(!showProfile);
 
   const outClick = () => {
     dispatch(logout());
+    sessionStorage.clear();
     navigate('/')
 
   }
 
+  const PopoverMy = () => {
 
-  const profile = (
-    <Popover
-      className='profile'
-      onBlur={handleClick}
-    >
-      <Popover.Body>
+    useEffect(() => {
 
-        <Link
-          className='link'
-          to={'/profile'}>
-          <div
-            className='profile-item'
-            onClick={handleClick}
-          >Профиль
-          </div>
-        </Link>
-      </Popover.Body>
-      {/* <Popover.Body>
-        <div
-          className='profile-item'
-          onClick={handleClick}
-        >Войти как компания</div>
-      </Popover.Body> */}
-      <Popover.Body>
-        <div
-          className='profile-item'
-          onClick={outClick}
-        >Выйти</div>
-      </Popover.Body>
-    </Popover>
-  )
+      if (!showProfile) {
+        console.log('qweq')
+        return
+      }
+
+      const handleOutsideClick = e => {
+
+        if (!popoverRef.current) return;
+
+        if (!popoverRef.current.contains(e.target)) {
+          console.log(showProfile)
+          setShowProfile(!showProfile)
+          console.log(e.target)
+        }
+      }
+      document.addEventListener('click', handleOutsideClick)
+      return () => {
+        document.removeEventListener('click', handleOutsideClick)
+      }
+    }, [showProfile])
+
+    return (
+      <div ref={popoverRef}>
+        {showProfile ?
+          <>
+            {role === 'MA' && <>
+
+              <Link
+                className='link'
+                to={'/profile'}>
+                <div
+                  className='profile-item'
+                  onClick={handleClick}
+                >Профиль
+                </div>
+              </Link>
+
+              <div
+                className='profile-item'
+                onClick={handleClick}
+              >Войти как компания</div>
+
+            </>}
+
+            <div
+              className='profile-item'
+              onClick={outClick}
+            >Выйти</div>
+          </>
+          : null}
+      </div>
+    )
+
+
+  }
 
   return (
-    <OverlayTrigger
-      show={showProfile}
-      trigger="click"
-      placement='bottom'
-      overlay={profile} >
+    <>
+
       <div
         className='log-in'
         onClick={handleClick}>
@@ -74,10 +101,12 @@ const UserMenu = () => {
           <p className='name'>{userName}</p>
         </div>
         <div>
-          <img className='row' src={showProfile ? rowUp : rowDown} />
+          <img className='row' src={showProfile ? rowUp : rowDown} alt='' />
         </div>
       </div>
-    </OverlayTrigger>
+
+      <PopoverMy />
+    </>
   )
 }
 

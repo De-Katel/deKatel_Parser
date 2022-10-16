@@ -34,7 +34,7 @@ Link {
    height: 32px;
    font-size: 30px;
    width: 340px;
-   justify-content: end;
+   justify-content: flex-end;
 }
 
 .button {

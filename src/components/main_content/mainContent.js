@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Routes, Route, useNavigate, useLocation  } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 import Analytics from "../analytics/analytics";
 import SearchPanel from '../search_panel/searchPanel';
@@ -22,14 +22,14 @@ const MainContent = () => {
     const [amount, setAmount] = useState([]);
     const [categoriesList, setCategoriesList] = useState([]);
 
-    const userCard = useSelector(state => state.users.user.userCard);
-    const token = useSelector(state => state.users.user.token);
-    
+    const userCard = useSelector(state => state.users.userCard);
+    const token = useSelector(state => state.users.token);
+
     const navigate = useNavigate();
     const location = useLocation();
 
     useEffect(() => {
-        if (token&&location.pathname=='/') { navigate('profile') }
+        if (token && location.pathname === '/') { navigate('profile') }
     })
 
     useEffect(() => {
@@ -60,34 +60,17 @@ const MainContent = () => {
                             value={amount.qty_company}
                             description={'Московских производителей'}
                             counterStyle={{
-                                width: '300px',
+                                width: '350px',
                                 height: '100px'
                             }}
                         />
-                        <ShowCounter
-                            src={icon}
-                            value={amount.qty_company}
-                            description={'Московских производителей'}
-                            counterStyle={{
-                                width: '300px',
-                                height: '100px'
-                            }}
-                        />
+                    
                         <ShowCounter
                             src={icon}
                             value={amount.qty_product}
                             description={'Товаров российкого производства'}
                             counterStyle={{
-                                width: '300px',
-                                height: '100px'
-                            }}
-                        />
-                        <ShowCounter
-                            src={icon}
-                            value={amount.qty_product}
-                            description={'Товаров российкого производства'}
-                            counterStyle={{
-                                width: '300px',
+                                width: '350px',
                                 height: '100px'
                             }}
                         />
@@ -108,8 +91,8 @@ const MainContent = () => {
                 <Route path="/login" element={<Login />} />
             </Routes>
 
-        </section>
 
+        </section>
     )
 }
 

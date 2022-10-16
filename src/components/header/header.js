@@ -6,16 +6,16 @@ import './header.css';
 import spaceDreams from '../../images/Space_Dreams.svg'
 
 const Header = () => {
-    
-    const token = useSelector(state => state.users.user.token);
+
+    const token = useSelector(state => state.users.token);
 
     return (
         <header>
             <div className="header">
-            <img src={spaceDreams} />
-            <UserPanel />
+                <img src={spaceDreams} />
+                <UserPanel />
             </div>
-            {!token&&<SearchPanel/>}
+            {!token && <SearchPanel />}
         </header>
     )
 }

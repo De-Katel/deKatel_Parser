@@ -13,7 +13,7 @@ const Profile = ({ card }) => {
 
     const dispatch = useDispatch();
 
-    const token = useSelector(state => state.users.user.token);
+    const token = useSelector(state => state.users.token);
     const isLoading = useSelector(state => state.datas.isLoading)
 
     const [item, setItem] = useState([]);

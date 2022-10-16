@@ -9,13 +9,14 @@ const NavPanel = () => {
     const dispatch = useDispatch();
     const location = useLocation();
 
-    const role = useSelector(state => state.users.user.role);
-    const userName = useSelector(state => state.users.user.userName);
+    const role = useSelector(state => state.users.role);
+    const userName = useSelector(state => state.users.userName);
     const searchData = useSelector(state => state.datas.searchData);
 
     const outClick = () => {
         dispatch(logout());
         navigate('/');
+        sessionStorage.clear();
     }
 
     return (
@@ -64,8 +65,8 @@ const NavPanel = () => {
                             Избранное
                         </Link>
                     </li>
-                    <li> </li>
                     <li
+                    className="out"
                         onClick={outClick}
                     >
                         Выйти
